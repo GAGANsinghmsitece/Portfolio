@@ -3,6 +3,8 @@ from .models import ProfileGagan,EducationGagan,ProjectsGagan,ProjectPara,Projec
 
 def home(request):
    query=ProfileGagan.objects.all()
+   projectcount=0
+   pstack=0
    for k in query:
    	   projectcount=k.projectsgagan_set.all().count()
    	   pstack=k.technicalstack_set.all().count()
@@ -18,6 +20,8 @@ def project(request,projectid):
 
 def profile(request):
   query=ProfileGagan.objects.all()
+  projectcount=0
+  pstack=0
   for k in query:
     projectcount=k.projectsgagan_set.all().count()
     pstack=k.technicalstack_set.all().count()
