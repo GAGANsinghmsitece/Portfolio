@@ -1,0 +1,152 @@
+{% extends 'base.html' %}hjghzcbxccjbd
+
+{% block content %}
+{% load mathfilters %}
+<div class="MainBody">
+	<div class="container">
+		{% for img in query.projectimage_set.all %}
+		<img class="mySlides" src="{{ img.image.url }}" style="width: 100%;">
+		{% endfor %}
+
+		<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+		<button class="w3-button w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+		
+		
+	</div>
+	<div class="blog">
+		<h3>{{ query.Name }}</h3>
+		{% for para in query.projectpara_set.all %}
+		<div class="Paragraph">{{ para.paragraph }}</div>
+		{% endfor %}
+
+		<div class="Linker">
+			{% if query.Glink %}
+			<a href="{{ query.Glink }}"><div class="github">View Code on Github</div></a>
+			{% endif %}
+			{% if query.Llink %}
+            <a href="{{ query.Llink }}"><div class="ViewProject">Visit Code</div></a>
+            {% endif %}
+		</div>
+
+	</div>
+
+
+
+
+</div>
+<!--<div class="container">
+  <img class="mySlides" src="/media/projectimage/1._skyscraper.jpg" style="width:100%">
+  <img class="mySlides" src="/media/projectimage/2._knitting_balls.jpg" style="width:100%">
+  <img class="mySlides" src="/media/projectimage/Capture.jpg" style="width:100%">
+  
+
+  <button class="w3-button  w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button  w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+
+
+</div>-->
+
+<style type="text/css">
+    .github,.ViewProject{
+    	padding-top: 15px;
+    	width: 200px;
+    	height: 35px;
+    	margin:auto;
+    	background-color: #e0474c;
+    	text-align: center;
+    	color: #fff;
+    	margin-top: 10px;
+    	border-radius: 20px;
+    }
+    .github:hover{
+    	background-color: #000;
+    }
+    .ViewProject{background-color: #000;}
+    .ViewProject:hover{background-color: #e0474}
+    .Linker{
+    	width: 100%;
+    	height: 50px;
+    }
+    
+    .blog h3{
+    	width: 100%;
+    	height: 50px;
+    	text-align: center;
+    	font-family:"-apple-system",BlinkMacSystemFont,Roboto,helvetica,Arial,나눔고딕,sans-serif;
+    	font-size: 25px;
+    }
+    .MainBody{
+		position: absolute;
+		top: 50px;
+		left: 0px;
+		width: 100%;
+		height: auto;
+        padding-bottom: 50px;
+	}
+	.container{
+		background-color: #c0c0c0;
+		width: 100%;
+		height: 300px;
+	}
+	.container img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		}
+	.w3-button{
+		position: absolute;
+		top:0px;
+		height: 300px;
+		background-color: #000000;
+		color: #ffffff;
+		outline: 0px;
+		border:0px;
+	}
+	.w3-button:hover{
+		background-color: #ffffff;
+		color: #000000;
+	}
+	.w3-display-right{
+		position: absolute;
+		right: 0px;
+	}
+	.blog{
+        width: 100%;
+    	height: 400px;
+    	background-color: #fff;
+    	margin-top: 0px;
+    }
+    .Paragraph{
+    	margin-top: 20px;
+    	width: 90%;
+    	margin-left: 5%;
+    	background-color: transparent;
+    	height: auto;
+        word-break: break-all;
+
+    }
+</style>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+{% endblock %}

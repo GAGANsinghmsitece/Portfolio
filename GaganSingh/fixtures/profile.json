@@ -1,0 +1,12 @@
+[
+{
+	"model":"GaganSingh.ProfileGagan",
+	"pk":"1",
+	"fields":{
+	      "Name":"Gagan Singh",
+	      "Image":"/media/profilepic/gagan.jpg",
+	      "Bio":"Currently, i am pursuing bachelor's degree in Electronics & Communications. Web development is my area of interest, with backend on Django . Android app development is another field in which i am in learning phase. Looking for great and challenging opportunities which can give me life long opportunity to learn & discover new things & collaboration for projects & internships.",
+	      "currently":"Maharaja Surajmal Institute of Technology",
+	        }
+}
+]

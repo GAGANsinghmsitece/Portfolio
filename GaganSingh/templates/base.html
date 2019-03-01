@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> Gagan Singh </title>
+    <meta name="description" content="">
+       <meta http-equiv="X-UA compatible" content="IE-edge">
+       <meta property="og:title" content="Sapora">
+       <meta property="og:url" content="https://s-diary.herokuapp.com">
+       <meta property="og:description" content="'SAPORA' is the next-generation social networking site , aiming to connect peoples through its out-of-the-books channels, collection, community , and allowing a meaningful discussion through its unique topics as well as direct messaging">  
+       <meta property="og:type" content="website">
+       <meta name="twitter:card" content="summary">
+       <meta name="twitter:title" content="Sapora">
+       <meta name="twitter:url" content="https://s-diary.herokuapp.com">
+       <meta name="twitter:description" content="'SAPORA' is the next-generation social networking site , aiming to connect peoples through its out-of-the-books channels, collection, community , and allowing a meaningful discussion through its unique topics as well as direct messaging" >
+       <meta name="twitter:image" content="{% static "/images/favicon/favicon.png" %}">
+       <meta name="weibo:type" content="webpage">
+       <meta name="weibo:webpage:url" content="https://www.s-diary.herokuapp.com">
+       <meta name="weibo:webpage:title" content="SAPORA">
+       <meta name="weibo:webpage:description" content="'SAPORA' is the next-generation social networking site , aiming to connect peoples through its out-of-the-books channels, collection, community , and allowing a meaningful discussion through its unique topics as well as direct messaging" >
+       <meta name="weibo:webpage:image" content="{% static "/images/favicon/favicon.png" %}">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="shortcut icon" href="{% static "/images/favicon/favicon.png" %}" type="image/x-icon" />
+
+       
+</head>
+<body>
+  <div class="navigationbar" id="navbar"><img src="{%static "/img/burger.png" %}"/ style="display: inline-block;position: absolute;top: 0px;" onclick="ShowMenu();"><p style="display:inline-block;position: absolute;top: 0px;margin-left: 50px;font-weight: bolder;">GAGAN SINGH</p></div>
+  <div class="bottomnavigationbar">
+     <a href="https://github.com/GAGANsinghmsitece"><img src="{%static "/img/git.png"%}" %}"/></a>
+      <a href="https://twitter.com/Gagansinghmsit"><img src="{%static "/img/twi.png"%}" %}"/></a>
+      <a href="https://www.linkedin.com/in/gagan-singh-0b933a159/"><img src="{%static "/img/link.png"%}" %}"/></a>
+      <a href="https://stackoverflow.com/users/10416232/gagan"><img src="{%static "/img/stack.png"%}" %}"/></a>
+  </div>
+
+
+  <div class="menu" id="navbar2">
+    <div class="content" style="background-color: #e0474c;color: #fff;padding-top: 0px;height: 50px;margin-top: 0px;"><p style="display: inline-block;position: relative;"> GAGAN SINGH</p><img src="{%static "/img/cross.png" %}" style="display: inline-block;float: right;z-index: 6;" onclick="CloseMenu();" /></div>
+    <div class="content"><a href="{%url 'home' %}">Home</a></div>
+    <div class="content"><a href="{%url 'profile' %}">Profile</a></div>
+    <div class="content"><a href="{%url 'finalproject' %}">Projects</a></div>
+    <div class="content"><a href="{%url 'stack' %}">Stack</a></div>
+    <div class="content"><a href="{%url 'timeline' %}">Timeline</a></div>
+    <div class="content" style="background-color: #e0474c;height: 50px;">
+      <a href="https://github.com/GAGANsinghmsitece"><img src="{%static "/img/redgit.png"%}" %}"/></a>
+      <a href="https://twitter.com/Gagansinghmsit"><img src="{%static "/img/redtwi.png"%}" %}"/></a>
+      <a href="https://www.linkedin.com/in/gagan-singh-0b933a159/"><img src="{%static "/img/redlink.png"%}" %}"/></a>
+      <a href="https://stackoverflow.com/users/10416232/gagan"><img src="{%static "/img/redstack.png"%}" %}"/></a>
+    </div>
+    <div class="content">All rights reserved Sapora Inc.</div>  
+  </div>
+  {% block content %}
+  {% endblock %}
+  
+<style type="text/css">
+  body{
+    font-family: "-apple-system",BlinkMacSystemFont,Roboto,helvetica,Arial,나눔고딕,sans-serif;
+  }
+  a{
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  text-decoration: none;
+  color:#000;
+  outline:0px;
+}
+  .menu{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:300px;
+    height: 100%;
+    background-color: #000000;
+    -webkit-animation-duration:1s;
+    -webkit-animation-name:menuanimation;
+    z-index: 3;
+    animation-duration: 1s;
+    animation-name: menuanimation;
+    transition:1s; 
+   
+  }
+  .content{
+    padding-left: 5%;
+    width: 95%;
+    margin-top: 15px;
+    height: 35px;
+    color:#e0474c;
+  }
+  .content a,.content a:hover,.content a:active{
+    color: #e0474c;font-weight: bolder;outline:0px;
+  }
+  @keyframes menuanimation{
+    from{top:0px;left:-100%;opacity: 0;}
+    to{top:0px;left:0px;opacity: 1;}
+  }
+  @-webkit-keyframes menuanimation{
+    from{top:0px;left:-100%;opacity: 0;}
+    to{top:0px;opacity: 1;left: 0px;}
+  }
+  .navigationbar{
+    position: absolute;
+    padding-top: 15px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 35px;
+    font-family: "-apple-system",BlinkMacSystemFont,Roboto,helvetica,Arial,나눔고딕,sans-serif;
+    color: #fff;
+    background-color:   #b11a21 ;
+    background-color: #7acfd6;
+    background-color: #e0474c;
+  }
+  .bottomnavigationbar{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0px;
+    height: 50px;
+    left:0px;
+    width: 100%;
+    background-color: #fff;
+    z-index: 2;
+  }
+  .sticky{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 4;
+  }
+  .sticky2{
+    position: fixed;
+    z-index: 7;
+  }
+
+</style>
+<script type="text/javascript">
+  function ShowMenu(){
+    
+    document.getElementsByClassName('menu')[0].style.display="block";
+  
+}
+function CloseMenu(){
+  document.getElementsByClassName('menu')[0].style.display="none";
+
+}
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+var navbar2 = document.getElementById("navbar2");
+
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+    navbar2.classList.add("sticky2");
+
+  } else {
+    navbar.classList.remove("sticky");
+    
+  }
+}
+</script>
+</body>

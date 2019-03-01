@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load mathfilters %}
+<div class="MainBody">
+
+
+<div class="Profile">
+    {% for q in query %}
+		<div class="ProfileHeading">Profile at a glance</div>
+		<div class="ProfileBody">
+			<div class="ProfileImageContainer"><img src="{{ q.Image.url }}"/></div>
+			<div class="ProfileAbout">
+				<div class="ProfileAboutRow">
+				    <div class="ProfileFirst">Name</div>
+				    <div class="ProfileFirst" style="color:#e0474c;">{{ q.Name }}</div>
+			    </div>
+			    <div class="ProfileAboutRow">
+			    	<div class="ProfileFirst">Bio</div>
+			    	<div class="ProfileFirst" style="color:#e0474c;">{{ q.Bio}}</div>
+			    </div>
+			    <div class="ProfileAboutRow">
+			    	<div class="ProfileFirst">Currently</div>
+			    	<div class="ProfileFirst" style="color:#e0474c;">{{ q.currently }}</div>
+			    </div>
+			    <div class="ProfileAboutRow">
+			    	<div class="ProfileFirst">Projects</div>
+			    	{% if projectgagan %}
+                    <div class="ProfileFirst" style="color:#e0474c;">{{ projectgagan }}</div>
+                    {% else %}
+                    <div class="ProfileFirst" style="color:#e0474c;">0</div>
+                    {% endif %}
+			    </div>
+			    <div class="ProfileAboutRow">
+			    	<div class="ProfileFirst">Stack</div>
+			    	<div class="ProfileFirst" style="color:#e0474c;">{{ pstack }}</div>
+			    </div>
+			</div>
+		</div>
+    </div>{% endfor %}
+
+
+
+     <div class="Projects">
+    	<div class="ProfileHeading">Education</div>
+        {% for q in query %}
+        {% for pro in q.educationgagan_set.all %}
+        {% if forloop.counter|mod:2 == 1 %}
+    	<div class=ProjectRow>
+            {% endif %}
+    		<div class="ProjectSampleCard">
+    			<div class="Institute">{{ pro.institute }} </div> 
+    			<div class="Institute" style="height: 20px;color: #9adcf9;padding-top: 0px;">{{ pro.joiningperiod }}</div>
+    			<div class="Institute">
+    				<div class="SubInstitute">Course</div>
+    				<div class="SubInstitute" style="color:#e0474c ">{{ pro.course }}</div>
+    			</div>
+    			<div class="Institute">
+    				<div class="SubInstitute">Score</div>
+    				<div class="SubInstitute" style="color:#e0474c ">{{ pro.score }}</div>
+    			</div>
+    		</div>
+
+    		{% if forloop.counter|mod:2 == 0 %}
+
+    	</div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <div class="Projects">
+    	<div class="ProfileHeading">Hobbies</div>
+    	<div style="width: 90%;padding-left: 5%;padding-right: 5%;align-content: center;">
+            {% for q in query %}
+            {% for pro in q.hobbies_set.all %}
+    	<div class="ProjectRowBullet">{{ pro.name }}</div>
+    	{% endfor %}{% endfor %}
+    	</div>
+    </div>
+
+<div class="footer">This website is dynamic unlike other one pages online resume which contains static webpages<br/>Website coded and maintained by Gagan Singh<br/>All rights reserved<br/>Sapora Inc.</div>
+
+</div>
+<style type="text/css">
+     .ProjectRowBullet{
+     	margin: auto;
+     	margin-bottom: 20px;
+     	display: inline-block;
+     	padding-top: 5px;
+     	border-radius: 20px;
+     text-align: center; 
+     	height: 25px;
+     	width:100px;
+     	background-color: #e0474c;
+     	color: #ffffff;
+     }
+     .ProjectRow{
+    	margin-top: 20px;
+    	width: 92%;
+    	height: auto;
+    	background-color: transparent;
+    	display: flex;
+    	justify-content: space-between;
+    	padding-left: 4%;
+    	padding-right: 4%;
+    	padding-bottom: 20px;
+    }
+    .SubInstitute{
+    	display: inline-block;
+    	width: 48%;
+    	height: 100%;
+    	text-align: center;
+    }
+    body{background-color: #f7f7f7;}
+    .MainBody{
+		position: absolute;
+		top: 50px;
+		left: 0px;
+		width: 100%;
+		height: auto;
+        padding-bottom: 60px;
+	}
+	.Profile{
+		width: 100%;
+		height: auto;
+		background-color: #ffffff;
+		}
+    .ProfileHeading {
+    padding-top: 5px;
+    width: 98%;
+    text-align: left;
+    height: 50px;
+    background-color: #f7f7f7;
+    color: #e0474c;
+    font-weight: bolder;
+    padding-left: 2%;
+    font-size: 30px;
+}
+	.ProfileBody{
+		position: relative;
+		top:-10px;
+		width: 100%;
+		background-color: transparent;
+		height: auto;
+		box-shadow: 8px -8px 6px -5px rgba(0,0,0,0.125);
+	
+	}
+	.ProfileImageContainer{
+		margin:auto;
+		margin-top: 10px;
+		width: 150px;
+		height: 150px;
+		border-radius: 75px;
+		background-color: #f7f7f7;
+	}
+	.ProfileImageContainer img{
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+	.ProfileAbout{
+		margin-top: 20px;
+	    width: 100%;
+	    height: auto;
+	    background-color: transparent;
+    }
+    .ProfileAboutRow{
+    	display: flex;
+    	justify-content: space-between;
+    	width: 100%;
+    	height: 50px;
+    }
+    .ProfileFirst{
+    	display: inline-block;
+    	width: 50%;
+    	height: 100%;
+    	text-align: center;
+    }
+     .Projects{
+    	width: 100%;
+    	height: auto;
+    	background-color: #f7f7f7;
+    	padding-bottom: 20px;
+    }
+    .ProjectSampleCard{
+    	display: inline-block;
+    	width: 45%;
+    	height: auto;
+    	background-color: #ffffff;
+    	border-radius: 10px;
+    	border: 1.5px solid rgba(0,0,0,0.125);
+    	box-shadow: 8px 8px 8px 6px rgba(0,0,0,0.125);
+    }
+    .ProjectSampleCard img{
+    	border-top-left-radius: 10px;
+    	border-top-right-radius: 10px;
+    	width: 100%;
+    	height: 300px;
+    	object-fit: cover;
+    }
+    .ProjectSampleCard h3{
+    	width: 100%;
+    	margin-top: -5px;
+    	text-align: center;
+    }
+    .ProjectSampleCard p{
+    	padding-left: 5%;
+    	margin-top: -17px;
+    	width: 90%;
+    	height: 350px;
+    	background-color:#f7f7f7;
+}
+.Institute{
+	padding-top: 10px;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	font-weight: bolder;
+}
+    @media(max-width: 450px){
+    	.ProjectRow{
+    		display: block;
+    		margin-bottom: -35px;
+    	}
+    	.ProjectSampleCard{
+    		width: 95%;
+    		height: auto;
+    		margin-left: 2.5%;
+    		margin-bottom: 15px;
+    	}   	
+    }
+	.footer{
+     	background-color: #f7f7f7;
+        width: 100%;
+        height: auto;
+        color: #e0474c;
+        text-align: center;
+        font-weight: bolder;
+    }
+</style>
+{% endblock %}
